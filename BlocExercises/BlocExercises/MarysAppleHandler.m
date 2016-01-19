@@ -14,7 +14,6 @@
     NSString *itemToReturn;
     
     NSString* purchasableItem;
-    dollars = 1000000000;
     if (dollars == 4) {
         purchasableItem = (@"get out of my store");
     }
@@ -37,7 +36,7 @@
 - (NSUInteger) dollarCostForAppleFlavoredVodka {
     /* WORK HERE */
     NSUInteger cost = 24;
-    NSUInteger price = (self.getsDiscount = NO) ? cost *= .75 : 24;
+    NSUInteger price = (self.getsDiscount == YES) ? cost *= .75 : 24;
     
     return price;
 }
