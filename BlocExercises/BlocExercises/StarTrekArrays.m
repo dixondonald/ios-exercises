@@ -10,24 +10,49 @@
 
 @implementation StarTrekArrays
 
+
 - (NSArray *) arrayOfStarTrekCharactersFromString:(NSString *)characterString {
-    /* WORK HERE */
-    return @[];
+//    NSString *starChars = @"Worf, son of Mogh, slayer of Gowron; Captain Jean-Luc Picard of the USS Enterprise; Beverly Crusher, Chief Medical Officer";
+    NSArray *starcharsArray = [characterString componentsSeparatedByString:@";"];
+    
+        
+    return starcharsArray;
 }
+
+
 
 - (NSString *) stringOfStarTrekCharactersFromArray:(NSArray *)characterArray {
-    /* WORK HERE */
-    return @"";
+//    NSMutableArray *starCharsArray = [@[@"Worf, son of Mogh, slayer of Gowron", @"Captain Jean-Luc Picard of the USS Enterprise", @"Beverly Crusher, Chief Medical Officer"] mutableCopy];
+    NSString *starChars = [characterArray componentsJoinedByString:@";"];
+
+    
+    return starChars;
 }
+
+
 
 - (NSArray *) alphabeticallySortedStarTrekCharactersFromArray:(NSArray *)characterArray {
-    /* WORK HERE */
-    return @[];
+    //    NSMutableArray *starCharsArray = [@[@"Worf, son of Mogh, slayer of Gowron", @"Captain Jean-Luc Picard of the USS Enterprise", @"Beverly Crusher, Chief Medical Officer"] mutableCopy];
+    NSMutableArray *array = [characterArray mutableCopy];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:nil ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
+    [array sortUsingDescriptors:@[sortDescriptor]];
+    
+    
+    return array;
 }
 
+
+
 - (BOOL) characterArrayContainsWorf:(NSArray *)characterArray {
-    /* WORK HERE */
-    return NO;
-}
+
+//    NSMutableArray *starCharsArray = [@[@"Worf, son of Mogh, slayer of Gowron", @"Captain Jean-Luc Picard of the USS Enterprise", @"Beverly Crusher, Chief Medical Officer"] mutableCopy];
+    
+    
+    NSMutableArray *array = [characterArray mutableCopy];
+    NSPredicate *containsWorf = [NSPredicate predicateWithFormat:@"SELF CONTAINS[c] 'worf'"];
+    [array filterUsingPredicate:containsWorf];
+    
+    return array.count > 0;
+ }
 
 @end
